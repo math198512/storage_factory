@@ -2,32 +2,31 @@
 
 pragma solidity ^0.8.19;
 
-// import {SimpleStorage, SimpleStorage2} from "./SimpleStorage.sol";
-import {SimpleStorage} from "./SimpleStorage.sol";
+import {BasicStorage} from "./BasicStorage.sol";
 
 contract StorageFactory {
-    SimpleStorage[] public listOfSimpleStorageContracts;
+    BaiscStorage[] public listOfBasicStorageContracts;
 
-    function createSimpleStorageContract() public {
-        SimpleStorage simpleStorageContractVariable = new SimpleStorage();
-        // SimpleStorage simpleStorage = new SimpleStorage();
-        listOfSimpleStorageContracts.push(simpleStorageContractVariable);
+    function createBasicStorageContract() public {
+        BasicStorage basicStorageContractVariable = new BasicStorage();
+        // BasicStorage basicStorage = new BasicStorage();
+        listOfBasicStorageContracts.push(basicStorageContractVariable);
     }
 
     function sfStore(
-        uint256 _simpleStorageIndex,
-        uint256 _simpleStorageNumber
+        uint256 _basicStorageIndex,
+        uint256 _basicStorageNumber
     ) public {
         // Address
         // ABI
-        // SimpleStorage(address(simpleStorageArray[_simpleStorageIndex])).store(_simpleStorageNumber);
-        listOfSimpleStorageContracts[_simpleStorageIndex].store(
-            _simpleStorageNumber
+        // BasicStorage(address(basicStorageArray[_basicStorageIndex])).store(_basicStorageNumber);
+        listOfBasicStorageContracts[_basicStorageIndex].store(
+            _basicStorageNumber
         );
     }
 
-    function sfGet(uint256 _simpleStorageIndex) public view returns (uint256) {
-        // return SimpleStorage(address(simpleStorageArray[_simpleStorageIndex])).retrieve();
-        return listOfSimpleStorageContracts[_simpleStorageIndex].retrieve();
+    function sfGet(uint256 _basicStorageIndex) public view returns (uint256) {
+        // return BasicStorage(address(basicStorageArray[_basicStorageIndex])).retrieve();
+        return listOfBasicStorageContracts[_basicStorageIndex].retrieve();
     }
 }
